@@ -1,19 +1,22 @@
-from distutils.core import setup
+﻿import io
+from os.path import abspath, dirname, join
+from setuptools import find_packages, setup
 
-try:
-  with open("README.md","r") as fh:
-    long_description = fh.read()
-except:
-  long_description = 'OOP Learning Example by Uncle Engineer'
+
+HERE = dirname(abspath(__file__))
+LOAD_TEXT = lambda name: io.open(join(HERE, name), encoding='UTF-8').read()
+DESCRIPTION = '\n\n'.join(LOAD_TEXT(_) for _ in [
+    'README.rst'
+])
 
 setup(
   name = 'uncleschool',         # How you named your package folder (MyLib)
   packages = ['uncleschool'],   # Chose the same as "name"
-  version = '0.1',      # Start with a small number and increase it with every change you make
+  version = '0.3',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'OOP Learning Example by Uncle Engineer',   # Give a short description about your library
-  long_description=long_description,
-  long_description_content_type = "text/markdown",
+  long_description=DESCRIPTION,
+  #long_description_content_type = "text/markdown",
   author = 'Uncle Engineer',                   # Type in your name
   author_email = 'loong.wissawakorn@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/UncleEngineer/uncleschool',   # Provide either the link to your github or to your website
